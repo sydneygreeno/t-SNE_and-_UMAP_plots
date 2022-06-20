@@ -5,17 +5,18 @@
 library(tsne)
 library(plotly)
 
-#randomization
+#randomization factor
 set.seed(0)
 
 #actual tsne
+##in R will measure summary of data and epoch which indicates the number of passes of the entire training dataset the machine learning algorithm has completed
 tsne <- tsne(cell_data)
 tsne <- data.frame(tsne, initial_dims=2)
 
 #bind to labels p
 pdb <- cbind(tsne, cell_line_ancestry$p)
 
-#error handling
+#error handling when neg will ignore all errors
 options(warn = -1)
 
 #actual plotting
